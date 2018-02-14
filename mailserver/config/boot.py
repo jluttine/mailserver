@@ -4,7 +4,7 @@ from salmon.routing import Router
 from salmon.server import Relay, LMTPReceiver
 from salmon import queue
 
-from config import settings
+from . import settings
 
 
 import os
