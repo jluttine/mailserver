@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 setup(
+    name             = "mailserver",
+    version          = "0.1",
     install_requires = ["salmon-mail"],
     packages         = find_packages(),
     package_data     = {
-        '': ["config/*.conf"],
+        '': ["mailserver/config/*.conf"],
     },
-    name             = "mailserver",
-    version          = "0.1",
 )
