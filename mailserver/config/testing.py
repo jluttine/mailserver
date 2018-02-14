@@ -6,7 +6,10 @@ from salmon.server import Relay
 from . import settings
 
 
-logging.config.fileConfig("config/test_logging.conf")
+import os
+dir_path = os.path.dirname(os.path.realpath(__file__))
+loggingConfig = os.path.join(dir_path, "test_logging.conf")
+logging.config.fileConfig(loggingConfig)
 
 # the relay host to actually send the final message to (set debug=1 to see what
 # the relay is saying to the log server).
