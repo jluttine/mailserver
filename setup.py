@@ -5,6 +5,6 @@ setup(
     install_requires = ["salmon-mail"],
     packages         = find_packages(),
     package_data     = {
-        '': ["mailserver/config/*.conf"],
+        'mailserver': ["config/*.conf"],
     },
 )
