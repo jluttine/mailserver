@@ -3,7 +3,12 @@
 # You may add additional parameters such as `username' and `password' if your
 # relay server requires authentication, `starttls' (boolean) or `ssl' (boolean)
 # for secure connections.
-relay_config = {'host': 'localhost', 'port': 8825}
+#
+# Add these configurations to a JSON file settings.json in the directory in
+# which Salmon is run and set permissions properly so the configuration is a)
+# out of version control and b) not accessible to other users of the computer.
+import json
+relay_config = json.load(open("settings.json"))
 
 receiver_config = {'host': '0.0.0.0', 'port': 25}
 
