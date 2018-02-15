@@ -13,7 +13,7 @@ relay_config = json.load(open("relay_config.json", "r"))
 
 receiver_config = json.load(open("receiver_config.json", "r"))
 
-handlers = ['mailserver.app.handlers.sample']
+handlers = ['mailserver.app.handlers.tuhlaajapojat']
 
 router_defaults = {'host': '.+'}
 
