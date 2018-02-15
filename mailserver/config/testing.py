@@ -7,7 +7,7 @@ from . import settings
 
 
 import os
-dir_path = os.path.dirname(os.path.realpath(__file__))
+dir_path = os.path.dirname(os.path.abspath(__file__))
 loggingConfig = os.path.join(dir_path, "test_logging.conf")
 logging.config.fileConfig(loggingConfig)
 
