@@ -10,7 +10,7 @@ from salmon.server import Relay, LMTPReceiver
 # run and set permissions properly so the configuration is a) out of version
 # control and b) not accessible to other users of the computer.
 
-relay = Relay(**json.load(open("relay_config.json", "r")))
+relay = Relay(debug=1, **json.load(open("relay_config.json", "r")))
 
 receiver = LMTPReceiver(**json.load(open("receiver_config.json", "r")))
 
