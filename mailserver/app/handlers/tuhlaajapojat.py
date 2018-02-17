@@ -27,7 +27,7 @@ def START(message, address=None, host=None):
     data = json.loads(resp.text)
 
     emails = data["emails"]
-    prefix = unicode(data["tag"])
+    prefix = data["tag"]
 
     if emails is None:
         raise SMTPError(550, "Unknown address")
@@ -36,7 +36,7 @@ def START(message, address=None, host=None):
 
     # Add the prefix if not already in the subject field
     if not prefix.lower() in subject.lower():
-        new_subject = u"{0} {1}".format(prefix, subject)
+        new_subject = "{0} {1}".format(prefix, subject)
         del message["Subject"]
         message["Subject"] = new_subject
 
