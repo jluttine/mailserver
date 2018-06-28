@@ -4,6 +4,7 @@ import json
 
 from salmon.routing import route, stateless
 from salmon.server import SMTPError
+from salmon.mail import MailResponse
 
 from mailserver.config.settings import relay
 
@@ -41,4 +42,23 @@ def START(message, address=None, host=None):
         message["Subject"] = new_subject
 
     if len(emails) > 0:
+        if any(email is None for email in emails):
+            # Send back to the sender
+            emails = [message["From"]]
+            message = MailResponse(
+                To=message["From"],
+                From="noreply@nodomain.com",
+                Subject="FAILED TO SEND: {0}".format(subject),
+                Body="""
+                Failed to send the email.
+
+                Some recipients don't have email addresses defined.
+
+                The email wasn't delivered to anyone.
+
+                Please contact the administrator for help.
+                """
+            )
         relay.deliver(message, To=emails)
+    else:
+        logging.debug("No receivers, not relaying the email")
