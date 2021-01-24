@@ -4,8 +4,10 @@ let
 in pythonPackages.buildPythonPackage rec {
   name = "mailserver";
   src = ./.;
+  nativeBuildInputs = [
+    pythonPackages.salmon-mail
+  ];
   propagatedBuildInputs = [
     pythonPackages.salmon-mail
   ];
 }
-
